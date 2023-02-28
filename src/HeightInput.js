@@ -36,7 +36,6 @@ const HeightInput = (props) => {
     const handleInchesChange = (event) => {
         setInches(event.target.value);
         let newCm = getMetricFromImperial(feet, event.target.value);
-        console.log(newCm)
         setCm(newCm);
         props.setHeightContents({
             imperialHeight: {

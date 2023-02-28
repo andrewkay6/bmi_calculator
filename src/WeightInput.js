@@ -1,6 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
+const getImperialFromMetric = (kg) => {
+  return parseInt(kg) * 2.205;
+
+
+}
+
+const getMetricFromImperial = (lbs) => {
+  return parseInt(lbs) / 2.205;
+
+}
+
 
 const WeightInput = (props) => {
     const [kg, setKg] = useState('');
@@ -8,9 +19,11 @@ const WeightInput = (props) => {
   
     const handleKgChange = (event) => {
       setKg(event.target.value);
+      let newLbs = getImperialFromMetric(event.target.value);
+      setLbs(newLbs);
       props.setWeightContents({
         imperialHeight: {
-          lbs: lbs
+          lbs: newLbs
         },
         metricWeight: {
           kg: event.target.value
@@ -20,12 +33,14 @@ const WeightInput = (props) => {
   
     const handleLbsChange = (event) => {
       setLbs(event.target.value);
+      let newKg = getMetricFromImperial(event.target.value);
+      setKg(newKg);
       props.setWeightContents({
         imperialHeight: {
           lbs: event.target.value
         },
         metricWeight: {
-          kg: kg
+          kg: newKg
         }
       });
     }

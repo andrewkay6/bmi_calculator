@@ -6,6 +6,12 @@ import HeightInput from './HeightInput';
 import WeightInput from './WeightInput';
 
 
+const calculateBMI = (heightContents, weightContents) => {
+  let heightInMeters = parseInt(heightContents['metricHeight']['cm']) / 100.0;
+  let weightInKg = parseInt(weightContents['metricWeight']['kg']);
+
+  return weightInKg / Math.pow(heightInMeters, 2)
+}
 const App = () => {
   const [heightUnits, setHeightUnits] = useState('metric');
   const [heightContents, setHeightContents] = useState({
@@ -80,7 +86,7 @@ const App = () => {
       <label>BMI Calculator</label> <br></br>
       <HeightInput unit={heightUnits} heightContents={heightContents} setHeightContents={setHeightContents} />
       <WeightInput unit={weightUnits} weightContents={weightContents} setWeightContents={setWeightContents} />
-      <label>Your BMI is:</label>
+      <label>Your BMI is: {calculateBMI(heightContents, weightContents)}</label>
       <label></label>
     </div>
   );
