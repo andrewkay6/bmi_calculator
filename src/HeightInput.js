@@ -44,20 +44,27 @@ const HeightInput = (props) => {
         });
     };
 
-    if (props.unit === 'imperial') {
-        return (
-            <div>
-                <input type="text" value={feet} onChange={handleFeetChange} />
-                <input type="text" value={inches} onChange={handleInchesChange} />
-            </div>
-        );
-    } else if (props.unit === 'metric') {
-        return (
-            <input type="text" value={cm} onChange={handleCmChange} />
-        );
-    } else {
-        return (<div />);
+    let inputField;
+    switch (props.unit) {
+        case 'imperial':
+            inputField = (
+                <div>
+                    <input type="text" value={feet} onChange={handleFeetChange} />
+                    <input type="text" value={inches} onChange={handleInchesChange} />
+                </div>
+            );
+            break;
+        case 'metric':
+            inputField = (
+                <input type="text" value={cm} onChange={handleCmChange} />
+            );
+            break;
+        default:
+            inputField = (<div />);
+            break;
     }
+
+    return inputField;
 };
 
 export default HeightInput;
