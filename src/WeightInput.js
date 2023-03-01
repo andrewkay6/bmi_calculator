@@ -4,7 +4,6 @@ import { useState } from "react";
 const getImperialFromMetric = (kg) => {
   return parseInt(kg) * 2.205;
 
-
 }
 
 const getMetricFromImperial = (lbs) => {
@@ -48,17 +47,17 @@ const WeightInput = (props) => {
     switch (props.unit) {
       case 'imperial':
         inputField = (
-          <div>
-            <input type="text" value={lbs} onChange={handleLbsChange} />
-          </div>
+          <>
+            <input type="text" value={lbs} onChange={handleLbsChange} />lbs
+          </>
         )
         break;
   
       case 'metric':
         inputField = (
-          <div>
-            <input type="text" value={kg} onChange={handleKgChange} />
-          </div>
+          <>
+            <input type="text" value={kg} onChange={handleKgChange} />kg
+          </>
         )
         break;
       default:

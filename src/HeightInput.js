@@ -69,19 +69,21 @@ const HeightInput = (props) => {
     switch (props.unit) {
         case 'imperial':
             inputField = (
-                <div>
-                    <input type="text" value={feet} onChange={handleFeetChange} />
-                    <input type="text" value={inches} onChange={handleInchesChange} />
-                </div>
+                <>
+                    <input type="text" value={feet} onChange={handleFeetChange} /> feet
+                    <input type="text" value={inches} onChange={handleInchesChange} /> inches
+                </>
             );
             break;
         case 'metric':
             inputField = (
-                <input type="text" value={cm} onChange={handleCmChange} />
+                <>
+                <input type="text" value={cm} onChange={handleCmChange} />cm
+                </>
             );
             break;
         default:
-            inputField = (<div />);
+            inputField = (<></>);
             break;
     }
 
