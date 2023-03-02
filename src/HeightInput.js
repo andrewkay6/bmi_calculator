@@ -1,16 +1,34 @@
 import React from "react";
 import { useState } from "react";
 
+const maxFeetLength = 6;
+const maxInchesLength = 6;
+const maxCMLength = 6;
+
 const getMetricFromImperial = (feet, inches) => {
-    let totalInches = (parseInt(feet) * 12) + parseInt(inches);
+    let totalInches = (parseFloat(feet) * 12) + parseFloat(inches);
     let cm = totalInches * 2.54;
-    return cm;
+
+    if (isNaN(cm)){
+        return "";
+    }
+    return cm.toString();
 
 }
 
 const getImperialFromMetric = (cm) => {
-    let inches = cm/2.54;
-    return [Math.floor(inches/12), inches%12];
+    let inches = parseFloat(cm)/2.54;
+    if (isNaN(inches)){
+        return ["",""];
+    }
+    return [(Math.floor(inches/12)).toString(), (inches%12).toString()];
+}
+
+const getResizedStringValue = (string, maxLength) => {
+    if (string.length > maxLength){
+        return string.substring(0, maxLength);
+    }
+    return string;
 }
 
 const HeightInput = (props) => {
@@ -19,12 +37,13 @@ const HeightInput = (props) => {
     const [cm, setCm] = useState('');
 
     const handleFeetChange = (event) => {
-        let newCm = getMetricFromImperial(event.target.value, inches);
-        setFeet(event.target.value);
+        let newFeet = getResizedStringValue(event.target.value, maxFeetLength); 
+        let newCm = getMetricFromImperial(newFeet, inches); 
+        setFeet(newFeet);
         setCm(newCm);
         props.setHeightContents({
             imperialHeight: {
-                feet: event.target.value,
+                feet: newFeet,
                 inches: inches
             },
             metricHeight: {
@@ -34,9 +53,12 @@ const HeightInput = (props) => {
     };
 
     const handleInchesChange = (event) => {
+        let newInches = event.target.value;
+        let newCm = getMetricFromImperial(feet, newInches);
+        
         setInches(event.target.value);
-        let newCm = getMetricFromImperial(feet, event.target.value);
         setCm(newCm);
+        console.log(newCm)
         props.setHeightContents({
             imperialHeight: {
                 feet: feet,
@@ -70,8 +92,8 @@ const HeightInput = (props) => {
         case 'imperial':
             inputField = (
                 <>
-                    <input type="text" value={feet} onChange={handleFeetChange} /> feet
-                    <input type="text" value={inches} onChange={handleInchesChange} /> inches
+                    <input type="text" value={feet} onChange={handleFeetChange} /> ft
+                    <input type="text" value={inches} onChange={handleInchesChange} /> in
                 </>
             );
             break;

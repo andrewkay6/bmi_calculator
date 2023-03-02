@@ -2,12 +2,20 @@ import React from "react";
 import { useState } from "react";
 
 const getImperialFromMetric = (kg) => {
-  return parseInt(kg) * 2.205;
+  if (isNaN(parseFloat(kg))){
+    return "";
+  }
+  
+  return parseFloat(kg) * 2.205;
 
 }
 
 const getMetricFromImperial = (lbs) => {
-  return parseInt(lbs) / 2.205;
+  if (isNaN(parseFloat(lbs))){
+    return "";
+  }
+
+  return parseFloat(lbs) / 2.205;
 
 }
 

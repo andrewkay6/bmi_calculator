@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -7,20 +6,27 @@ import WeightInput from './WeightInput';
 import BMIRangeTable from './BMIRangeTable';
 
 
-const vcolor = "red";
-
 const generateBMIColor = (heightContents, weightContents) => {
   let BMI = calculateBMI(heightContents, weightContents);
-  switch (BMI) {
-    case "-":
-      return "grey";
-      break;
 
-    default:
-      return "red";
-      break;
+  if (BMI === "-"){
+    return "grey";
   }
-}
+  if (parseInt(BMI) < 18.5){
+    return "yellow";
+  }
+  if (parseInt(BMI) >= 18.5 && parseInt(BMI) < 25){
+    return "green";
+  }
+  if (parseInt(BMI)>= 25 && parseInt(BMI)< 30){
+    return "red";
+  }
+  else{
+    return "purple";
+  }
+
+  }
+
 
 const calculateBMI = (heightContents, weightContents) => {
   let heightInMeters = parseInt(heightContents['metricHeight']['cm']) / 100.0;
@@ -63,76 +69,79 @@ const App = () => {
     setWeightUnits(event.target.value);
   }
   return (
-    <>
+    <div className='page'>
       <div className='titleContainer'>
-        <div className='title'>BMI Calculator</div>
+        <div className='title'>What's my BMI?</div>
       </div>
       <div className='app'>
-        
-          <div className='appLogic'>
-            <label className="header">Height</label>
-            <div className='unitsContainer'>
-              <input
-                type="radio"
-                id="metricHeight"
-                name="heightoption"
-                value="metric"
-                checked={heightUnits === 'metric'}
-                onChange={handleHeightUnitChange}
-              />
-              <label htmlFor="metricHeight">Metric</label>
-              <input
-                type="radio"
-                id="imperialHeight"
-                name="heightoption"
-                value="imperial"
-                checked={heightUnits === 'imperial'}
-                onChange={handleHeightUnitChange}
-              />
-              <label htmlFor="imperialHeight">Imperial</label>
-            </div>
-            <label className="header">Weight</label>
-            <div className='unitsContainer'>
-              <input
-                type="radio"
-                id="metricWeight"
-                name="weightoption"
-                value="metric"
-                checked={weightUnits === 'metric'}
-                onChange={handleWeightUnitChange}
-              />
-              <label htmlFor="metricWeight">Metric</label>
-              <input
-                type="radio"
-                id="imperialWeight"
-                name="weightoption"
-                value="imperial"
-                checked={weightUnits === 'imperial'}
-                onChange={handleWeightUnitChange}
-              />
-              <label htmlFor="imperialWeight">Imperial</label>
-            </div>
-            <div className='unitsContainer'>
-              <HeightInput unit={heightUnits} heightContents={heightContents} setHeightContents={setHeightContents} />
-            </div>
-            <br />
-            <div className='unitsContainer'>
-              <WeightInput unit={weightUnits} weightContents={weightContents} setWeightContents={setWeightContents} />
-            </div>
-            <br />
+
+        <div className='appLogic'>
+          <div className='unitSelection'>
+          <label className="header">Height</label>
+          <div className='unitsContainer'>
+            <input
+              type="radio"
+              id="metricHeight"
+              name="heightoption"
+              value="metric"
+              checked={heightUnits === 'metric'}
+              onChange={handleHeightUnitChange}
+            />
+            <label htmlFor="metricHeight">Metric</label>
+            <input
+              type="radio"
+              id="imperialHeight"
+              name="heightoption"
+              value="imperial"
+              checked={heightUnits === 'imperial'}
+              onChange={handleHeightUnitChange}
+            />
+            <label htmlFor="imperialHeight">Imperial</label>
           </div>
-          <BMIRangeTable />
-        
-        <div className='resultContainer'>
-          <label className='resultLabel'>Your BMI is: </label><br />
-          <label className='bmiResult'
-            style={{ color: generateBMIColor(heightContents, weightContents) }}>
-            {calculateBMI(heightContents, weightContents)}
-          </label>
+          <br></br>
+          <label className="header">Weight</label>
+          <div className='unitsContainer'>
+            <input
+              type="radio"
+              id="metricWeight"
+              name="weightoption"
+              value="metric"
+              checked={weightUnits === 'metric'}
+              onChange={handleWeightUnitChange}
+            />
+            <label htmlFor="metricWeight">Metric</label>
+            <input
+              type="radio"
+              id="imperialWeight"
+              name="weightoption"
+              value="imperial"
+              checked={weightUnits === 'imperial'}
+              onChange={handleWeightUnitChange}
+            />
+            <label htmlFor="imperialWeight">Imperial</label>
+            </div>
+          </div>
+          <div className='totalInputsContainer'>
+          <div className='inputsContainer'>
+            <HeightInput unit={heightUnits} heightContents={heightContents} setHeightContents={setHeightContents} />
+          </div>
+          <br />
+          <div className='inputsContainer'>
+            <WeightInput unit={weightUnits} weightContents={weightContents} setWeightContents={setWeightContents} />
+          </div>
+          </div>
         </div>
+        <BMIRangeTable />
       </div>
-    </>
+      <div className='resultContainer'>
+        <label className='resultLabel'>Your BMI is: </label><br />
+        <label className='bmiResult'
+          style={{ color: generateBMIColor(heightContents, weightContents) }}>
+          {calculateBMI(heightContents, weightContents)}
+        </label>
+      </div>
+    </div>
   );
 }
 
-      export default App;
+export default App;

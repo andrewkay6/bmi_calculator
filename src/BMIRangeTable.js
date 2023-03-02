@@ -5,7 +5,7 @@ const BMIRangeTable = () => {
 
     return (
         <div className="tableContainer">
-        <div className="tableTitle">Reference Information</div>
+        <div className="tableTitle">Reference Ranges</div>
         <table className="bmiRangeTable">
             <tr>
                 <th>BMI Range</th>
@@ -28,11 +28,8 @@ const BMIRangeTable = () => {
                 <td>Obese</td>
             </tr>
         </table>
-        <div className="disclaimerBody">
-        Body Mass Index (BMI) is a person's weight in kilograms (or pounds) divided by the square of height in meters (or feet). A high BMI can indicate high body fatness. BMI screens for weight categories that may lead to health problems, but it does not diagnose the body fatness or health of an individual.
-        </div>
-        <div className="disclaimerSource">Taken from: </div>
-        <a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html">CDC.gov 'Body Mass Index (BMI)'</a>
+        <br/>
+        
     </div> 
     );
 }
