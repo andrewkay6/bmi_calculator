@@ -9,23 +9,23 @@ import BMIRangeTable from './BMIRangeTable';
 const generateBMIColor = (heightContents, weightContents) => {
   let BMI = calculateBMI(heightContents, weightContents);
 
-  if (BMI === "-"){
+  if (BMI === "-") {
     return "grey";
   }
-  if (parseInt(BMI) < 18.5){
+  if (parseInt(BMI) < 18.5) {
     return "yellow";
   }
-  if (parseInt(BMI) >= 18.5 && parseInt(BMI) < 25){
+  if (parseInt(BMI) >= 18.5 && parseInt(BMI) < 25) {
     return "green";
   }
-  if (parseInt(BMI)>= 25 && parseInt(BMI)< 30){
+  if (parseInt(BMI) >= 25 && parseInt(BMI) < 30) {
     return "red";
   }
-  else{
+  else {
     return "purple";
   }
 
-  }
+}
 
 
 const calculateBMI = (heightContents, weightContents) => {
@@ -61,13 +61,6 @@ const App = () => {
     }
   });
 
-
-  const handleHeightUnitChange = (event) => {
-    setHeightUnits(event.target.value);
-  }
-  const handleWeightUnitChange = (event) => {
-    setWeightUnits(event.target.value);
-  }
   return (
     <div className='page'>
       <div className='titleContainer'>
@@ -77,59 +70,18 @@ const App = () => {
 
         <div className='appLogic'>
           <div className='unitSelection'>
-          <label className="header">Height</label>
-          <div className='unitsContainer'>
-            <input
-              type="radio"
-              id="metricHeight"
-              name="heightoption"
-              value="metric"
-              checked={heightUnits === 'metric'}
-              onChange={handleHeightUnitChange}
-            />
-            <label htmlFor="metricHeight">Metric</label>
-            <input
-              type="radio"
-              id="imperialHeight"
-              name="heightoption"
-              value="imperial"
-              checked={heightUnits === 'imperial'}
-              onChange={handleHeightUnitChange}
-            />
-            <label htmlFor="imperialHeight">Imperial</label>
-          </div>
-          <br></br>
-          <label className="header">Weight</label>
-          <div className='unitsContainer'>
-            <input
-              type="radio"
-              id="metricWeight"
-              name="weightoption"
-              value="metric"
-              checked={weightUnits === 'metric'}
-              onChange={handleWeightUnitChange}
-            />
-            <label htmlFor="metricWeight">Metric</label>
-            <input
-              type="radio"
-              id="imperialWeight"
-              name="weightoption"
-              value="imperial"
-              checked={weightUnits === 'imperial'}
-              onChange={handleWeightUnitChange}
-            />
-            <label htmlFor="imperialWeight">Imperial</label>
+            <label className="header">Height</label>
+            <div className='inputsContainer'>
+              <HeightInput unit={heightUnits} heightContents={heightContents} setHeightContents={setHeightContents} />
+            </div>
+            <br />
+            <label className="header">Weight</label>
+
+            <div className='inputsContainer'>
+              <WeightInput unit={weightUnits} weightContents={weightContents} setWeightContents={setWeightContents} />
             </div>
           </div>
-          <div className='totalInputsContainer'>
-          <div className='inputsContainer'>
-            <HeightInput unit={heightUnits} heightContents={heightContents} setHeightContents={setHeightContents} />
-          </div>
-          <br />
-          <div className='inputsContainer'>
-            <WeightInput unit={weightUnits} weightContents={weightContents} setWeightContents={setWeightContents} />
-          </div>
-          </div>
+
         </div>
         <BMIRangeTable />
       </div>

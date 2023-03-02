@@ -51,29 +51,17 @@ const WeightInput = (props) => {
         }
       });
     }
-    let inputField;
-    switch (props.unit) {
-      case 'imperial':
-        inputField = (
-          <>
-            <input type="text" value={lbs} onChange={handleLbsChange} />lbs
-          </>
-        )
-        break;
-  
-      case 'metric':
-        inputField = (
-          <>
-            <input type="text" value={kg} onChange={handleKgChange} />kg
-          </>
-        )
-        break;
-      default:
-        inputField = (<div>test</div>);
-        break;
-  
-    }
-    return inputField;
+    
+   
+
+    return (
+      <>
+        <input type="text" placeholder="lbs" value={lbs} onChange={handleLbsChange} /> 
+        <input type="text" placeholder="kg" value={kg} onChange={handleKgChange} />
+      </>
+    );
+
+    
   }
 
 export default WeightInput;

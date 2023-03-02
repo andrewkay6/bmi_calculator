@@ -88,6 +88,7 @@ const HeightInput = (props) => {
     };
 
     let inputField;
+    /*
     switch (props.unit) {
         case 'imperial':
             inputField = (
@@ -108,6 +109,15 @@ const HeightInput = (props) => {
             inputField = (<></>);
             break;
     }
+    */
+    inputField = (
+        <>
+            <input type="text" className="halfTextInput" placeholder="ft" value={feet} onChange={handleFeetChange} /> 
+            <input type="text" className="halfTextInput" placeholder='in' value={inches} onChange={handleInchesChange} />
+            
+            <input type="text" placeholder='cm' value={cm} onChange={handleCmChange} />
+        </>
+    );
 
     return inputField;
 };
