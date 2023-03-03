@@ -58,7 +58,6 @@ const HeightInput = (props) => {
         
         setInches(event.target.value);
         setCm(newCm);
-        console.log(newCm)
         props.setHeightContents({
             imperialHeight: {
                 feet: feet,
