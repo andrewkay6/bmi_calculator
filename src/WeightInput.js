@@ -29,7 +29,7 @@ const WeightInput = (props) => {
       let newLbs = getImperialFromMetric(event.target.value);
       setLbs(newLbs);
       props.setWeightContents({
-        imperialHeight: {
+        imperialWeight: {
           lbs: newLbs
         },
         metricWeight: {
@@ -43,7 +43,7 @@ const WeightInput = (props) => {
       let newKg = getMetricFromImperial(event.target.value);
       setKg(newKg);
       props.setWeightContents({
-        imperialHeight: {
+        imperialWeight: {
           lbs: event.target.value
         },
         metricWeight: {

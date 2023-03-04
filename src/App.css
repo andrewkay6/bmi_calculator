@@ -108,6 +108,8 @@ input[type="text"] {
 }
 .nextRanges{
   width:50%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .bmiResult{
@@ -118,7 +120,7 @@ input[type="text"] {
 @keyframes breathing-color {
   from
   {
-    filter: brightness(120%);
+    filter: brightness(100%);
   }
   to
   {
@@ -130,19 +132,6 @@ input[type="text"] {
   text-align: center;
 }
 
-a{
-  color:rgba(206, 203, 247, 0.932);
-  text-decoration: none;
-
-}
-.disclaimerSource{
-  font-size: 60%;
-
-}
-a:visited{
-  color:rgb(97, 97, 97);
-}
-
 .resultLabel{
   font-size: 200%;
 }
@@ -152,7 +141,7 @@ a:visited{
   flex-direction: row;
   justify-content: space-evenly;
   align-items: stretch;
-  width: 80%;
+  width: 100%;
   align-self: center;
   
 }
@@ -163,8 +152,10 @@ td,th{
   justify-content: center;
   font-weight: normal;
   font-size: 130%;
+  justify-items: center;
   
 }
+
 td{
   padding: 5.5%
 }
@@ -197,7 +188,7 @@ th {
 }
 .page{
   display: flex;
-  width: 60%;
+  width: 70%;
   flex-direction: column;
   margin:auto;
   justify-content: space-evenly;

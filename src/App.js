@@ -24,7 +24,7 @@ const generateBMIColor = (heightContents, weightContents) => {
     return "red";
   }
   else {
-    return "purple";
+    return "magenta";
   }
 
 }

@@ -1,10 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-const maxFeetLength = 6;
-const maxInchesLength = 6;
-const maxCMLength = 6;
-
 const getMetricFromImperial = (feet, inches) => {
     let totalInches = (parseFloat(feet) * 12) + parseFloat(inches);
     let cm = totalInches * 2.54;
@@ -24,20 +20,13 @@ const getImperialFromMetric = (cm) => {
     return [(Math.floor(inches/12)).toString(), (inches%12).toString()];
 }
 
-const getResizedStringValue = (string, maxLength) => {
-    if (string.length > maxLength){
-        return string.substring(0, maxLength);
-    }
-    return string;
-}
-
 const HeightInput = (props) => {
     const [feet, setFeet] = useState('');
     const [inches, setInches] = useState('');
     const [cm, setCm] = useState('');
 
     const handleFeetChange = (event) => {
-        let newFeet = getResizedStringValue(event.target.value, maxFeetLength); 
+        let newFeet = event.target.value; 
         let newCm = getMetricFromImperial(newFeet, inches); 
         setFeet(newFeet);
         setCm(newCm);
@@ -69,10 +58,10 @@ const HeightInput = (props) => {
         });
     };
     const handleCmChange = (event) => {
-        setCm(event.target.value);
         let newFeetAndInches = getImperialFromMetric(event.target.value);
         let newFeet = newFeetAndInches[0];
         let newInches = newFeetAndInches[1];
+        setCm(event.target.value);
         setInches(newInches);
         setFeet(newFeet);
         props.setHeightContents({
@@ -86,30 +75,7 @@ const HeightInput = (props) => {
         });
     };
 
-    let inputField;
-    /*
-    switch (props.unit) {
-        case 'imperial':
-            inputField = (
-                <>
-                    <input type="text" value={feet} onChange={handleFeetChange} /> ft
-                    <input type="text" value={inches} onChange={handleInchesChange} /> in
-                </>
-            );
-            break;
-        case 'metric':
-            inputField = (
-                <>
-                <input type="text" value={cm} onChange={handleCmChange} />cm
-                </>
-            );
-            break;
-        default:
-            inputField = (<></>);
-            break;
-    }
-    */
-    inputField = (
+    return (
         <>
             <input type="text" className="halfTextInput" placeholder="ft" value={feet} onChange={handleFeetChange} /> 
             <input type="text" className="halfTextInput" placeholder='in' value={inches} onChange={handleInchesChange} />
@@ -118,7 +84,6 @@ const HeightInput = (props) => {
         </>
     );
 
-    return inputField;
 };
 
 export default HeightInput;
