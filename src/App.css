@@ -106,6 +106,9 @@ input[type="text"] {
 .tableContainer{
   width:50%;
 }
+.nextRanges{
+  width:50%;
+}
 
 .bmiResult{
 
@@ -159,6 +162,7 @@ td,th{
   border-color: white;
   justify-content: center;
   font-weight: normal;
+  font-size: 130%;
   
 }
 td{

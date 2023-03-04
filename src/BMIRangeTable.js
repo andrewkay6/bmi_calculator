@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const BMIRangeTable = () => {
 
     return (
@@ -30,7 +29,6 @@ const BMIRangeTable = () => {
                     </tr>
                 </tbody>
             </table>
-            <br />
 
         </div>
     );
