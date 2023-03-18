@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bmi_calculator/static/css/main.aeb9f280.css",
+    "main.css": "/bmi_calculator/static/css/main.cf84fe29.css",
     "main.js": "/bmi_calculator/static/js/main.519347b7.js",
     "static/js/787.17dbfb13.chunk.js": "/bmi_calculator/static/js/787.17dbfb13.chunk.js",
     "index.html": "/bmi_calculator/index.html",
-    "main.aeb9f280.css.map": "/bmi_calculator/static/css/main.aeb9f280.css.map",
+    "main.cf84fe29.css.map": "/bmi_calculator/static/css/main.cf84fe29.css.map",
     "main.519347b7.js.map": "/bmi_calculator/static/js/main.519347b7.js.map",
     "787.17dbfb13.chunk.js.map": "/bmi_calculator/static/js/787.17dbfb13.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aeb9f280.css",
+    "static/css/main.cf84fe29.css",
     "static/js/main.519347b7.js"
   ]
 }
