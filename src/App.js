@@ -14,13 +14,13 @@ const generateBMIColor = (heightContents, weightContents) => {
   if (BMI === "-") {
     return "grey";
   }
-  if (parseInt(BMI) < 18.5) {
+  if (parseFloat(BMI) < 18.5) {
     return "yellow";
   }
-  if (parseInt(BMI) >= 18.5 && parseInt(BMI) < 25) {
+  if (parseFloat(BMI) >= 18.5 && parseFloat(BMI) < 25) {
     return "green";
   }
-  if (parseInt(BMI) >= 25 && parseInt(BMI) < 30) {
+  if (parseFloat(BMI) >= 25 && parseFloat(BMI) < 30) {
     return "red";
   }
   else {
