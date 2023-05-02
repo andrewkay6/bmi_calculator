@@ -1,12 +1,11 @@
 import './App.css';
 import { useState } from 'react';
 
-import HeightInput from './HeightInput';
-import WeightInput from './WeightInput';
 import BMIRangeTable from './BMIRangeTable';
 import NextBMIRange from './NextBMIRange';
 import BMIResultContainer from './BMIResultContainer';
-
+import InputLogic from './InputLogic';
+import Title from './Title';
 
 const generateBMIColor = (heightContents, weightContents) => {
   let BMI = calculateBMI(heightContents, weightContents);
@@ -62,44 +61,25 @@ const App = () => {
 
   return (
     <div className='page'>
-      <div className='titleContainer'>
-        <div className='title'>What's my BMI?</div>
-      </div>
+      <Title />
       <div className='app'>
-
-        <div className='appLogic'>
-          <div className='unitSelection'>
-            <label className="header">Height</label>
-            <div className='inputsContainer'>
-              <HeightInput 
-              heightContents={heightContents} 
-              setHeightContents={setHeightContents} 
-              />
-            </div>
-            <br />
-            <label className="header">Weight</label>
-            <div className='inputsContainer'>
-              <WeightInput 
-              weightContents={weightContents} 
-              setWeightContents={setWeightContents} 
-              />
-            </div>
-          </div>
-
-        </div>
+        <InputLogic
+          heightContents={heightContents}
+          setHeightContents={setHeightContents}
+          weightContents={weightContents}
+          setWeightContents={setWeightContents}
+        />
         <BMIRangeTable />
         <NextBMIRange
-        heightContents = {heightContents}
-        weightContents = {weightContents}
-        calculateBMI = {calculateBMI}
+          heightContents={heightContents}
+          weightContents={weightContents}
+          calculateBMI={calculateBMI}
         />
       </div>
-      <BMIResultContainer 
-      BMI={calculateBMI(heightContents, weightContents)} 
-      bmiColor={generateBMIColor(heightContents, weightContents)}
+      <BMIResultContainer
+        BMI={calculateBMI(heightContents, weightContents)}
+        bmiColor={generateBMIColor(heightContents, weightContents)}
       />
-      
-      
     </div>
   );
 }

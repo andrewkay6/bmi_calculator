@@ -13,13 +13,17 @@ body {
   animation-duration: 5s;
   animation-iteration-count: infinite;
   color: white;
-  font-family: 'Tilt Warp'
-
+  font-family: 'Tilt Warp';
+  box-sizing: border-box;
+  margin: 0;
 }
-
-
 .titleContainer{
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5%;
+  margin-top: 1%;
+  box-sizing: border-box;
 }
 .title{
   display: flex;
@@ -27,9 +31,7 @@ body {
   font-size: 600%;
   text-align: center;
 }
-
 .unitsContainer{
-  
   display: flex;
   justify-content: space-evenly;
   font-size: 70%;
@@ -38,7 +40,7 @@ body {
   
 }
 .unitSelection{
-  width: 80%;
+  /* width: 80%; */
   align-self: center;
 }
 
@@ -65,14 +67,8 @@ body {
   transition: all 0.3s;
   
 }
-
-input[type="radio"] + label:hover{
-  backdrop-filter:brightness(120%);
-  border: solid 2px transparent;
-}
 input[type="text"] {
   border: none;
-  
   background-color: rgba(128, 128, 128, 0.2);
   opacity: 1;
   padding: 8px;
@@ -94,11 +90,10 @@ input[type="text"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  position: relative;
   align-self: center;
   width:50%;
-  height:100%;
-  
+  align-items: stretch;
+  margin-bottom: auto;
 }
 .tableContainer{
   width:50%;
@@ -107,6 +102,7 @@ input[type="text"] {
   width:50%;
   padding-left: 2%;
   padding-right: 2%;
+  box-sizing: border-box;
 }
 
 .bmiResult{
@@ -125,15 +121,20 @@ input[type="text"] {
   }
 }
 .resultContainer{
-  vertical-align: bottom;
-  text-align: center;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 1%;
 }
 
 .resultLabel{
   font-size: 200%;
 }
 .app { 
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -146,8 +147,9 @@ input[type="text"] {
   .app {
     flex-direction: column;
     align-items: center;
-    width: 200%;
+    /* width: 200%; */
     justify-content: center;
+
   }
 }
 
@@ -194,18 +196,14 @@ th {
 }
 .page{
   display: flex;
-  width: 70%;
+  width: 100%;
   flex-direction: column;
-  margin:auto;
   justify-content: space-evenly;
   height: 100%;
-  
-  
+  min-height: 100vh;
+  box-sizing: border-box;
 }
-.flexBreak {
-  flex-basis: 100%;
-  height: 0;
-}
+
 .totalInputsContainer{
   display: flex;
   align-items: center;
