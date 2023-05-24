@@ -9,7 +9,8 @@ const HeightInput = ({setHeightContents}) => {
 
     const handleFeetChange = (event) => {
         let newFeet = event.target.value; 
-        let newCm = getHeightMetricFromImperial(newFeet, inches); 
+        let newCm = getHeightMetricFromImperial(newFeet, inches);
+        newCm = stringRoundTo(newCm, 2);
         setFeet(newFeet);
         setCm(newCm);
         setHeightContents({
@@ -26,6 +27,7 @@ const HeightInput = ({setHeightContents}) => {
     const handleInchesChange = (event) => {
         let newInches = event.target.value;
         let newCm = getHeightMetricFromImperial(feet, newInches);
+        newCm = stringRoundTo(newCm, 2);
         
         setInches(event.target.value);
         setCm(newCm);
@@ -43,6 +45,7 @@ const HeightInput = ({setHeightContents}) => {
         let newFeetAndInches = getHeightImperialFromMetric(event.target.value);
         let newFeet = newFeetAndInches[0];
         let newInches = newFeetAndInches[1];
+        newInches = stringRoundTo(newInches, 2);
 
         setCm(event.target.value);
         setInches(newInches);
@@ -61,8 +64,8 @@ const HeightInput = ({setHeightContents}) => {
     return (
         <>
             <input type="text" className="halfTextInput" placeholder="ft" value={feet} onChange={handleFeetChange} /> 
-            <input type="text" className="halfTextInput" placeholder='in' value={stringRoundTo(inches,2)} onChange={handleInchesChange} />            
-            <input type="text" placeholder='cm' value={stringRoundTo(cm, 2)} onChange={handleCmChange} />
+            <input type="text" className="halfTextInput" placeholder='in' value={inches} onChange={handleInchesChange} />            
+            <input type="text" placeholder='cm' value={cm} onChange={handleCmChange} />
         </>
     );
 

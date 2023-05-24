@@ -42,7 +42,7 @@ const roundTo = (num, places) => {
 
 const stringRoundTo = (num, places) => {
     let rounded = roundTo(num, places);
-    if (rounded === 0){
+    if (isNaN(rounded)){
         return "";
     }
     return "" + rounded;

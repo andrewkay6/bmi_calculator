@@ -11,6 +11,7 @@ const WeightInput = (props) => {
     const handleKgChange = (event) => {
       setKg(event.target.value);
       let newLbs = getWeightImperialFromMetric(event.target.value);
+      newLbs = stringRoundTo(newLbs, 2);
       setLbs(newLbs);
       props.setWeightContents({
         imperialWeight: {
@@ -25,6 +26,7 @@ const WeightInput = (props) => {
     const handleLbsChange = (event) => {
       setLbs(event.target.value);
       let newKg = getWeightMetricFromImperial(event.target.value);
+      newKg = stringRoundTo(newKg, 2);
       setKg(newKg);
       props.setWeightContents({
         imperialWeight: {
@@ -40,8 +42,8 @@ const WeightInput = (props) => {
 
     return (
       <>
-        <input type="text" placeholder="lbs" value={stringRoundTo(lbs,3)} onChange={handleLbsChange} /> 
-        <input type="text" placeholder="kg" value={stringRoundTo(kg,3)} onChange={handleKgChange} />
+        <input type="text" placeholder="lbs" value={lbs} onChange={handleLbsChange} /> 
+        <input type="text" placeholder="kg" value={kg} onChange={handleKgChange} />
       </>
     );
 
